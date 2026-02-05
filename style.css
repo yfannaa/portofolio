@@ -218,7 +218,6 @@ nav ul li a:hover {
 /* --- 7. MEDSOS SECTION --- */
 .medsos-list {
   padding: 80px 15%;
-  text-align: center;
 }
 
 .medsos-item {
@@ -233,7 +232,6 @@ nav ul li a:hover {
   color: #555;
   font-weight: 600;
   transition: 0.3s;
-  text-align: center;
 }
 
 .medsos-item:hover {
