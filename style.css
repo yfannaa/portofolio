@@ -1,56 +1,45 @@
-/* --- 1. IMPORT FONT --- */
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Sacramento&display=swap');
+/* --- 1. SETTING DASAR --- */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Sacramento&display=swap');
 
-/* --- 2. VARIABLE WARNA & SETTING --- */
 :root {
-    --soft-pink: #ffebf3;      /* Pink pucat untuk bg */
-    --accent-pink: #f8bbd0;    /* Pink lembut untuk kartu */
-    --deep-pink: #f06292;      /* Pink tegas untuk teks/tombol */
-    --pure-white: #ffffff;     /* Putih bersih */
-    --max-width: 1100px;       /* Batas lebar konten agar tetap rapi di laptop */
+    --p-pink: #ffe4ef;     /* Pink latar */
+    --accent: #ff85a1;    /* Pink cerah */
+    --hot-pink: #fb6f92;  /* Pink tua */
+    --white: #ffffff;
+    --card-width: 320px;  /* Kita kunci lebar kartu agar seragam */
 }
 
-/* --- 3. GLOBAL RESET --- */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Agar padding tidak merusak ukuran elemen */
-    /* Kursor Pita Pink */
+    box-sizing: border-box;
     cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym49.cur'), auto;
 }
 
 body {
     font-family: 'Quicksand', sans-serif;
-    background-color: var(--pure-white);
-    color: #555;
-    line-height: 1.6;
-    overflow-x: hidden; /* Mencegah scroll samping */
+    background-color: var(--white);
+    color: #444;
 }
 
-/* --- 4. NAVIGASI (RAPI & FIXED) --- */
+/* --- 2. NAVIGASI (RAPI & SLIM) --- */
 nav {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 15px 0;
-    border-bottom: 2px dashed var(--accent-pink); /* Detail jahitan baju */
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.nav-container {
-    max-width: var(--max-width); /* Konten nav tetap di tengah */
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 15px 10%;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(5px);
+    border-bottom: 2px solid var(--p-pink);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo {
     font-family: 'Sacramento', cursive;
-    font-size: 2rem;
-    color: var(--deep-pink);
-    font-weight: bold;
+    font-size: 1.8rem;
+    color: var(--hot-pink);
 }
 
 nav ul {
@@ -60,122 +49,121 @@ nav ul {
 
 nav ul li a {
     text-decoration: none;
-    color: #777;
-    margin-left: 25px;
-    font-weight: 600;
+    color: #666;
+    margin-left: 20px;
+    font-weight: 700;
     font-size: 0.9rem;
     transition: 0.3s;
 }
 
-nav ul li a:hover {
-    color: var(--deep-pink);
-}
-
-/* --- 5. HERO SECTION (PUSAT PERHATIAN) --- */
+/* --- 3. HERO (SIMPLE & CUTE) --- */
 .hero {
-    height: 70vh; /* Tidak terlalu tinggi, pas untuk laptop */
-    background-color: var(--soft-pink);
+    height: 60vh; /* Tinggi sedang */
+    background: linear-gradient(to bottom, var(--p-pink), var(--white));
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    text-align: center;
+    align-items: center;
     position: relative;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    color: var(--deep-pink);
-    margin-bottom: 10px;
+    font-size: 3rem;
+    color: var(--hot-pink);
     font-family: 'Sacramento', cursive;
 }
 
-/* Animasi Pita & Boneka Pixel */
-.decor {
+/* Animasi Floating Pita & Boneka Pixel */
+.decor-pixel {
     position: absolute;
     font-size: 40px;
-    animation: float 3s ease-in-out infinite;
+    animation: floatAnim 3s infinite ease-in-out;
 }
-.pita-left { left: 10%; top: 20%; }
-.bear-right { right: 10%; bottom: 20%; animation-delay: 1.5s; }
+.d1 { top: 15%; left: 20%; }
+.d2 { bottom: 15%; right: 20%; animation-delay: 1.5s; }
 
-@keyframes float {
+@keyframes floatAnim {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+    50% { transform: translateY(-10px); }
 }
 
-/* --- 6. ABOUT SECTION --- */
-.about {
-    max-width: 800px; /* Lebih sempit agar teks enak dibaca */
-    margin: 80px auto;
-    text-align: center;
-    padding: 0 20px;
-}
-
-/* --- 7. PROYEK GRID (KARTU SEJAJAR) --- */
+/* --- 4. PROJECT GRID (PAS & SEJAJAR) --- */
 .projects {
-    max-width: var(--max-width);
-    margin: 80px auto;
-    padding: 0 20px;
+    padding: 60px 5%;
+    max-width: 1200px; /* Batas lebar konten */
+    margin: 0 auto;    /* Center container */
 }
 
 .projects h2 {
     text-align: center;
+    color: var(--hot-pink);
     margin-bottom: 40px;
-    color: var(--deep-pink);
 }
 
 .project-grid {
     display: grid;
-    /* Kartu akan sejajar 3 kolom di laptop, 1 di HP */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    /* Kita buat grid yang fleksibel tapi punya batas lebar kartu */
+    grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
+    gap: 25px;
+    justify-items: center; /* Kartu tetap di tengah grid */
 }
 
 .project-card {
-    background: var(--pure-white);
-    border: 1px solid var(--accent-pink);
-    border-radius: 20px;
-    padding: 20px;
-    transition: 0.3s;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(248, 187, 208, 0.2);
+    width: 100%;
+    max-width: var(--card-width); /* Agar kartu TIDAK melar kegedean */
+    background: var(--white);
+    border: 2px solid var(--p-pink);
+    border-radius: 25px;
+    overflow: hidden;
+    transition: 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 182, 193, 0.2);
 }
 
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(248, 187, 208, 0.4);
-}
-
-/* Mencegah gambar kede-gedean! */
+/* INI RAHASIA AGAR FOTO PAS (TIDAK KECIL/GEDE) */
 .project-card img {
-    width: 100%;       /* Mengikuti lebar kartu */
-    height: 180px;     /* Tinggi seragam */
-    object-fit: cover; /* Foto dipotong rapi, tidak gepeng */
-    border-radius: 15px;
-    margin-bottom: 15px;
+    width: 100%;
+    aspect-ratio: 4 / 3; /* Mengunci bentuk foto (Landscape Rapi) */
+    object-fit: cover;   /* Foto memenuhi kotak tanpa penyet */
+    border-bottom: 2px solid var(--p-pink);
 }
 
-/* --- 8. MEDSOS & FOOTER --- */
+.project-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.project-info h3 {
+    font-size: 1.1rem;
+    color: var(--hot-pink);
+}
+
+/* Hover effect manis */
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent);
+}
+
+/* --- 5. MEDSOS & FOOTER --- */
 .medsos {
-    background: var(--soft-pink);
-    padding: 40px 0;
+    padding: 50px;
     text-align: center;
 }
 
 .medsos a {
-    display: inline-block;
-    margin: 0 15px;
-    color: var(--deep-pink);
-    font-weight: bold;
     text-decoration: none;
-    font-size: 1.1rem;
+    color: var(--accent);
+    margin: 0 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    border: 1px solid var(--p-pink);
+    border-radius: 20px;
 }
 
 footer {
-    padding: 30px;
+    padding: 20px;
     text-align: center;
+    background: var(--p-pink);
+    color: #888;
     font-size: 0.8rem;
-    color: #999;
-    border-top: 1px solid var(--accent-pink);
 }
