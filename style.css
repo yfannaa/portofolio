@@ -153,6 +153,10 @@ nav ul li a:hover {
   padding: 80px 15%;
   text-align: center;
 }
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  color: #ff4d6d;
+}
 
 .proyek-grid {
   display: grid;
@@ -214,11 +218,13 @@ nav ul li a:hover {
 
 /* --- 7. MEDSOS SECTION --- */
 .medsos-list {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
   padding: 80px 15%;
   text-align: center;
+}
+
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  color: #ff4d6d;
 }
 
 .medsos-item {
