@@ -1,208 +1,181 @@
-/* --- Import Google Fonts: Kombinasi imut dan rapi --- */
-@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Montserrat:wght@300;500;700&family=Sacramento&display=swap');
+/* --- 1. IMPORT FONT --- */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Sacramento&display=swap');
 
-/* --- Root Variables: Agar pengaturan warna konsisten --- */
+/* --- 2. VARIABLE WARNA & SETTING --- */
 :root {
-    --p-pink: #ffdae9; /* Pink pastel utama */
-    --s-pink: #f8a5c2; /* Pink untuk aksen */
-    --hot-pink: #ff4d6d; /* Pink tegas untuk teks/tombol */
-    --white: #ffffff;
-    --lace: #fff5f8; /* Putih tulang kemerahan */
-    --soft-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+    --soft-pink: #ffebf3;      /* Pink pucat untuk bg */
+    --accent-pink: #f8bbd0;    /* Pink lembut untuk kartu */
+    --deep-pink: #f06292;      /* Pink tegas untuk teks/tombol */
+    --pure-white: #ffffff;     /* Putih bersih */
+    --max-width: 1100px;       /* Batas lebar konten agar tetap rapi di laptop */
 }
 
-/* --- Pengaturan Dasar & Custom Cursor --- */
+/* --- 3. GLOBAL RESET --- */
 * {
-    margin: 0; /* Hapus margin bawaan browser */
-    padding: 0; /* Hapus padding bawaan browser */
-    box-sizing: border-box; /* Ukuran elemen dihitung termasuk padding & border */
-    /* Cursor Pita Pink (Menggunakan link eksternal yang aman) */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Agar padding tidak merusak ukuran elemen */
+    /* Kursor Pita Pink */
     cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym49.cur'), auto;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif; /* Font body yang rapi */
-    background-color: var(--lace);
-    /* Pola polkadot halus di background agar tidak sepi */
-    background-image: radial-gradient(var(--p-pink) 1px, transparent 1px);
-    background-size: 25px 25px;
-    color: #444;
-    overflow-x: hidden; /* Mencegah scroll horizontal */
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--pure-white);
+    color: #555;
+    line-height: 1.6;
+    overflow-x: hidden; /* Mencegah scroll samping */
 }
 
-/* --- Navigasi: Rapi & Elegan --- */
+/* --- 4. NAVIGASI (RAPI & FIXED) --- */
 nav {
-    display: flex; /* Mengatur tata letak fleksibel */
-    justify-content: space-between; /* Logo di kiri, menu di kanan */
-    align-items: center; /* Rata tengah secara vertikal */
-    padding: 20px 8%; /* Ruang dalam navigasi */
-    background: rgba(255, 255, 255, 0.85); /* Efek kaca transparan */
-    backdrop-filter: blur(10px); /* Blur di belakang navigasi */
-    position: sticky; /* Menempel di atas saat scroll */
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px 0;
+    border-bottom: 2px dashed var(--accent-pink); /* Detail jahitan baju */
+    position: sticky;
     top: 0;
-    z-index: 1000;
-    border-bottom: 3px double var(--s-pink); /* Garis ganda seperti jahitan kain */
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: var(--max-width); /* Konten nav tetap di tengah */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
 }
 
 .logo {
-    font-family: 'Sacramento', cursive; /* Font tulisan tangan mewah */
-    font-size: 2.5rem;
-    color: var(--hot-pink);
+    font-family: 'Sacramento', cursive;
+    font-size: 2rem;
+    color: var(--deep-pink);
+    font-weight: bold;
 }
 
 nav ul {
     display: flex;
-    list-style: none; /* Hilangkan titik bullet */
-}
-
-nav ul li {
-    margin-left: 30px;
+    list-style: none;
 }
 
 nav ul li a {
-    text-decoration: none; /* Hilangkan garis bawah link */
-    color: #666;
-    font-weight: 500;
-    transition: 0.3s; /* Animasi saat kursor mendekat */
+    text-decoration: none;
+    color: #777;
+    margin-left: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: 0.3s;
 }
 
 nav ul li a:hover {
-    color: var(--hot-pink);
-    letter-spacing: 1px; /* Efek melebar sedikit saat di-hover */
+    color: var(--deep-pink);
 }
 
-/* --- Hero Section: Playful & Cute --- */
+/* --- 5. HERO SECTION (PUSAT PERHATIAN) --- */
 .hero {
-    height: 85vh;
+    height: 70vh; /* Tidak terlalu tinggi, pas untuk laptop */
+    background-color: var(--soft-pink);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
     position: relative;
 }
 
 .hero h1 {
-    font-family: 'Gaegu', cursive; /* Font pixel/imut */
-    font-size: 4.5rem;
-    color: var(--hot-pink);
-    text-shadow: 3px 3px white; /* Efek bayangan teks agar timbul */
-    z-index: 5;
+    font-size: 3.5rem;
+    color: var(--deep-pink);
+    margin-bottom: 10px;
+    font-family: 'Sacramento', cursive;
 }
 
-/* Dekorasi Animasi Pita & Boneka (Pseudo-elements) */
-.hero::before, .hero::after {
+/* Animasi Pita & Boneka Pixel */
+.decor {
     position: absolute;
-    font-size: 60px;
-    animation: floating 3s ease-in-out infinite; /* Animasi melayang */
+    font-size: 40px;
+    animation: float 3s ease-in-out infinite;
+}
+.pita-left { left: 10%; top: 20%; }
+.bear-right { right: 10%; bottom: 20%; animation-delay: 1.5s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
 }
 
-.hero::before {
-    content: "🎀"; /* Pita di kiri */
-    left: 15%;
-    top: 20%;
-}
-
-.hero::after {
-    content: "🧸"; /* Boneka di kanan */
-    right: 15%;
-    bottom: 25%;
-    animation-delay: 1.5s; /* Mulai lebih lambat agar bergantian */
-}
-
-@keyframes floating {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(10deg); }
-}
-
-/* --- About Section: Bersih & Rapi --- */
+/* --- 6. ABOUT SECTION --- */
 .about {
-    padding: 100px 15%;
-    background: white;
-    border-radius: 60px 60px 0 0; /* Membuat sudut atas melengkung imut */
-    box-shadow: var(--soft-shadow);
+    max-width: 800px; /* Lebih sempit agar teks enak dibaca */
+    margin: 80px auto;
     text-align: center;
+    padding: 0 20px;
 }
 
-.about h2 {
-    color: var(--s-pink);
-    margin-bottom: 20px;
-    font-family: 'Gaegu', sans-serif;
-    font-size: 2.5rem;
-}
-
-/* --- Proyek Grid: Sejajar & Modern --- */
+/* --- 7. PROYEK GRID (KARTU SEJAJAR) --- */
 .projects {
-    padding: 80px 10%;
+    max-width: var(--max-width);
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.projects h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--deep-pink);
 }
 
 .project-grid {
-    display: grid; /* Gunakan Grid untuk tata letak kartu */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsif otomatis */
-    gap: 30px; /* Jarak antar kartu */
+    display: grid;
+    /* Kartu akan sejajar 3 kolom di laptop, 1 di HP */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
 
 .project-card {
-    background: white;
-    padding: 25px;
-    border-radius: 30px;
-    border: 2px solid var(--p-pink);
-    transition: 0.4s ease;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.project-card img {
-    width: 100%; /* Gambar menyesuaikan lebar kartu */
-    height: 200px; /* Tinggi tetap agar rapi */
-    object-fit: cover; /* Gambar dipotong rapi agar tidak penyet */
+    background: var(--pure-white);
+    border: 1px solid var(--accent-pink);
     border-radius: 20px;
-    margin-bottom: 15px;
+    padding: 20px;
+    transition: 0.3s;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(248, 187, 208, 0.2);
 }
 
 .project-card:hover {
-    transform: translateY(-10px); /* Kartu naik saat di-hover */
-    border-color: var(--hot-pink);
-    box-shadow: var(--soft-shadow);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(248, 187, 208, 0.4);
 }
 
-/* --- Medsos: Simpel & Manis --- */
+/* Mencegah gambar kede-gedean! */
+.project-card img {
+    width: 100%;       /* Mengikuti lebar kartu */
+    height: 180px;     /* Tinggi seragam */
+    object-fit: cover; /* Foto dipotong rapi, tidak gepeng */
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+/* --- 8. MEDSOS & FOOTER --- */
 .medsos {
+    background: var(--soft-pink);
+    padding: 40px 0;
     text-align: center;
-    padding: 60px;
 }
 
 .medsos a {
-    text-decoration: none;
-    font-size: 1.2rem;
-    color: var(--hot-pink);
+    display: inline-block;
     margin: 0 15px;
-    padding: 10px 20px;
-    border: 2px solid var(--p-pink);
-    border-radius: 50px;
-    transition: 0.3s;
-}
-
-.medsos a:hover {
-    background: var(--p-pink);
-    transform: scale(1.1);
-}
-
-/* --- Footer --- */
-footer {
-    background: var(--p-pink);
-    color: white;
-    padding: 40px;
-    text-align: center;
+    color: var(--deep-pink);
     font-weight: bold;
-    border-top: 5px dotted white; /* Efek garis putus-putus seperti renda */
+    text-decoration: none;
+    font-size: 1.1rem;
 }
 
-/* --- Media Queries: Agar bagus di HP juga --- */
-@media (max-width: 768px) {
-    .hero h1 { font-size: 3rem; }
-    nav { flex-direction: column; padding: 20px; }
-    nav ul { margin-top: 15px; }
-    .hero::before, .hero::after { font-size: 40px; }
+footer {
+    padding: 30px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #999;
+    border-top: 1px solid var(--accent-pink);
 }
