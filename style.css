@@ -150,6 +150,8 @@ nav ul li a:hover {
 /* --- 6. PROYEK SECTION (GRID RAPI) --- */
 .proyek {
   background-color: #fffcfd;
+  padding: 80px 15%;
+  text-align: center;
 }
 
 .proyek-grid {
@@ -215,6 +217,8 @@ nav ul li a:hover {
   display: flex;
   justify-content: center;
   gap: 30px;
+  padding: 80px 15%;
+  text-align: center;
 }
 
 .medsos-item {
